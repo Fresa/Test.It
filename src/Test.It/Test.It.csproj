@@ -50,7 +50,7 @@
     <Compile Include="Specifications\ITestConfigurer.cs" />
     <Compile Include="Starters\IApplicationStarter.cs" />
     <Compile Include="IServiceContainer.cs" />
-    <Compile Include="IUseFixture.cs" />
+    <Compile Include="IUseConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Specifications\Specification.cs" />
     <Compile Include="TaskStartingMiddleware.cs" />
