@@ -2,3 +2,4 @@ src/Test.It/bin/
 src/Test.It/obj/
 packages/
 !tools/**
+.vs/
