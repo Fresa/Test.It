@@ -1,20 +1,19 @@
-﻿using Owin;
-using Test.It.AppBuilders;
+﻿using Test.It.AppBuilders;
 
 namespace Test.It
 {
-    public class ControllerProvidingAppBuilder<TController> : IAppBuilder<TController>
+    internal class ControllerProvidingAppBuilder<TController> : IApplicationBuilder<TController>
     {
-        private readonly IAppBuilder _appBuilder;
+        private readonly IApplicationBuilder _appBuilder;
 
-        public ControllerProvidingAppBuilder(IAppBuilder appBuilder)
+        public ControllerProvidingAppBuilder(IApplicationBuilder appBuilder)
         {
             _appBuilder = appBuilder;
         }
 
         public TController Controller { get; private set; }
 
-        public IAppBuilder WithController(TController controller)
+        public IApplicationBuilder WithController(TController controller)
         {
             Controller = controller;
             return _appBuilder;

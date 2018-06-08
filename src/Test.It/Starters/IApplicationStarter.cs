@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
-using Owin;
 using Test.It.AppBuilders;
 
 namespace Test.It.Starters
 {
     public interface IApplicationStarter
     {
-        IDictionary<string, object> Start(IAppBuilder applicationBuilder);
+        IDictionary<string, object> Start(IApplicationBuilder applicationBuilder);
     }
 
-    public interface IApplicationStarter<out TClient>
+    public interface IMyApplicationStarter<out TClient>
     {
-        IDictionary<string, object> Start(IAppBuilder<TClient> applicationBuilder);
+        IDictionary<string, object> Start(IApplicationBuilder<TClient> applicationBuilder);
     }
 }
