@@ -2,7 +2,7 @@
 
 namespace Test.It
 {
-    internal class ControllerProvidingAppBuilder<TController> : IApplicationBuilder<TController>
+    public class ControllerProvidingAppBuilder<TController> : IApplicationBuilder<TController>
     {
         private readonly IApplicationBuilder _appBuilder;
 
