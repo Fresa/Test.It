@@ -1,4 +1,4 @@
-﻿using Test.It.AppBuilders;
+﻿using Test.It.ApplicationBuilders;
 
 namespace Test.It
 {

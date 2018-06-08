@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Test.It.AppBuilders;
+using Test.It.ApplicationBuilders;
 
 namespace Test.It.Starters
 {
@@ -8,7 +8,7 @@ namespace Test.It.Starters
         IDictionary<string, object> Start(IApplicationBuilder applicationBuilder);
     }
 
-    public interface IMyApplicationStarter<out TClient>
+    public interface IApplicationStarter<out TClient>
     {
         IDictionary<string, object> Start(IApplicationBuilder<TClient> applicationBuilder);
     }

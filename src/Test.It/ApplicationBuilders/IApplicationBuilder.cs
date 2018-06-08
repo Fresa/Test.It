@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Test.It.AppBuilders
+namespace Test.It.ApplicationBuilders
 {
     public interface IApplicationBuilder
     {
