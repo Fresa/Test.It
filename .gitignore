@@ -3,3 +3,5 @@ src/Test.It/obj/
 packages/
 !tools/**
 .vs/
+src/Test/Test.It.Tests/bin/
+src/Test/Test.It.Tests/obj/

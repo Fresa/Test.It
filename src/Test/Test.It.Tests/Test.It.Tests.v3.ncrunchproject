@@ -1,0 +1,12 @@
+﻿<ProjectConfiguration>
+  <Settings>
+    <IgnoredTests>
+      <NamedTestSelector>
+        <TestName>Test.It.Tests.Given_an_output_target.When_writing_to_console_utilizing_xunit_parallelism.It_should_have_sent_the_output_to_the_output_target</TestName>
+      </NamedTestSelector>
+      <NamedTestSelector>
+        <TestName>Test.It.Tests.Given_an_output_target.When_writing_to_console.It_should_have_sent_the_output_to_the_output_target</TestName>
+      </NamedTestSelector>
+    </IgnoredTests>
+  </Settings>
+</ProjectConfiguration>
