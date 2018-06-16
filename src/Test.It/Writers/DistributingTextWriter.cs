@@ -13,7 +13,7 @@ namespace Test.It.Writers
         {
             var id = Guid.NewGuid();
             _textWriters.TryAdd(id, textWriter);
-            return new DisposeAction(() => _textWriters.TryRemove(id, out _));
+            return new DisposableAction(() => _textWriters.TryRemove(id, out _));
         }
 
         public override void Write(char value)
@@ -26,4 +26,6 @@ namespace Test.It.Writers
 
         public override Encoding Encoding => Encoding.Default;
     }
+
+    
 }

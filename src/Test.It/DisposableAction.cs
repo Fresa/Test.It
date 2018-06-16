@@ -2,11 +2,11 @@
 
 namespace Test.It
 {
-    internal class DisposeAction : IDisposable
+    internal class DisposableAction : IDisposable
     {
         private readonly Action _dispose;
 
-        public DisposeAction(Action dispose)
+        public DisposableAction(Action dispose)
         {
             _dispose = dispose;
         }
