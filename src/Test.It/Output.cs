@@ -28,7 +28,7 @@ namespace Test.It
 
         private static void SetupConsoleOut()
         {
-            OutputCapturer.Writer.Register(new StreamWriter(Console.OpenStandardOutput()));
+            OutputCapturer.Writer.OnWriting += new StreamWriter(Console.OpenStandardOutput()).Write;
             Console.SetOut(OutputCapturer.Writer);
         }
     }

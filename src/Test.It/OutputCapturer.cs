@@ -9,22 +9,27 @@ namespace Test.It
     {
         private static readonly AsyncLocal<Guid> LocalCaptureId = new AsyncLocal<Guid>();
 
-        public static DistributingTextWriter Writer { get; } = new DistributingTextWriter();
+        public static ListeningTextWriter Writer { get; } = new ListeningTextWriter();
 
         public static IDisposable Capture(TextWriter output)
         {
             var id = Guid.NewGuid();
 
-            var filteringTextWriter = new FilteringTextWriterDecorator(output, () => ShouldCapture(id));
+            void Output(char character)
+            {
+                if (ShouldCapture(id))
+                {
+                    output.Write(character);
+                }
+            }
 
             LocalCaptureId.Value = id;
-            var unregistrer = Writer.Register(filteringTextWriter);
+            Writer.OnWriting += Output;
 
             return new DisposableAction(() =>
             {
+                Writer.OnWriting -= Output;
                 LocalCaptureId.Value = Guid.Empty;
-                unregistrer.Dispose();
-                filteringTextWriter.Dispose();
             });
         }
 
