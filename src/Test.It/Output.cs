@@ -7,6 +7,8 @@ namespace Test.It
     public static class Output
     {
         private static readonly TextWriterTraceListener TextWriterTraceListener = new TextWriterTraceListener(OutputCapturer.Writer);
+        private static readonly StreamWriter ConsoleStreamWriter = new StreamWriter(Console.OpenStandardOutput());
+        private static readonly object ConsoleStreamWriteLock = new object();
 
         static Output()
         {
@@ -28,7 +30,13 @@ namespace Test.It
 
         private static void SetupConsoleOut()
         {
-            OutputCapturer.Writer.OnWriting += new StreamWriter(Console.OpenStandardOutput()).Write;
+            OutputCapturer.Writer.OnWriting += character =>
+            {
+                lock (ConsoleStreamWriteLock)
+                {
+                    ConsoleStreamWriter.Write(character);
+                }
+            };
             Console.SetOut(OutputCapturer.Writer);
         }
     }

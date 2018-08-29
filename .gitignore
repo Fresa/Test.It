@@ -5,3 +5,5 @@ packages/
 .vs/
 src/Test/Test.It.Tests/bin/
 src/Test/Test.It.Tests/obj/
+_NCrunch_Test.It/
+Test.It.v3.ncrunchsolution.user
