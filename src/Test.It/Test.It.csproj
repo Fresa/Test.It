@@ -1,16 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <Authors>Fredrik Arvidsson</Authors>
-        <Description>Abstract testing framework that promotes a BDD style of testing</Description>
-        <RepositoryUrl>https://github.com/Fresa/Test.It</RepositoryUrl>
-        <PackageLicenseUrl>https://github.com/Fresa/Test.It/blob/master/LICENSE</PackageLicenseUrl>
-        <Copyright>Copyright © 2017 Fredrik Arvidsson</Copyright>
-        <PackageTags>test it testing</PackageTags>
-        <PackageReleaseNotes />
-        <PackageVersion></PackageVersion>
-        <Version>1.0.0</Version>
-        <IncludeSource>True</IncludeSource>
-        <IncludeSymbols>True</IncludeSymbols>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Fredrik Arvidsson</Authors>
+    <Description>Abstract testing framework that promotes a BDD style of testing</Description>
+    <RepositoryUrl>https://github.com/Fresa/Test.It</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/Fresa/Test.It/blob/master/LICENSE</PackageLicenseUrl>
+    <Copyright>Copyright © 2017 Fredrik Arvidsson</Copyright>
+    <PackageTags>test it testing</PackageTags>
+    <PackageReleaseNotes />
+    <PackageVersion></PackageVersion>
+    <Version>1.0.0</Version>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63102-01" PrivateAssets="All" />
+  </ItemGroup>
+  <PropertyGroup Condition="'$(NCrunch)' == '1'">
+    <EnableSourceControlManagerQueries>false</EnableSourceControlManagerQueries>
+  </PropertyGroup>
 </Project>
