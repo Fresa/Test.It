@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using FluentAssertions;
-using Moq;
 using Test.It.Tests.Helpers;
 using Xunit;
 
@@ -12,12 +12,13 @@ namespace Test.It.Tests
         public class When_writing_to_trace : XUnit2Specification, IDisposable
         {
             private ToStringTextWriter _toStringTextWriter;
-            private IDisposable _subscription;
+            private List<IDisposable> _subscriptions = new List<IDisposable>();
 
             protected override void Given()
             {
                 _toStringTextWriter = new ToStringTextWriter();
-                _subscription = Output.WriteTo(_toStringTextWriter);
+                _subscriptions.Add(Output.WriteTo(_toStringTextWriter));
+                _subscriptions.Add(Output.WriteToTrace());
             }
 
             protected override void When()
@@ -35,19 +36,23 @@ namespace Test.It.Tests
             public void Dispose()
             {
                 _toStringTextWriter.Dispose();
-                _subscription.Dispose();
+                foreach (var subscription in _subscriptions)
+                {
+                    subscription.Dispose();
+                }
             }
         }
 
         public class When_writing_to_trace_utilizing_xunit_parallelism : XUnit2Specification, IDisposable
         {
             private ToStringTextWriter _toStringTextWriter;
-            private IDisposable _subscription;
+            private readonly List<IDisposable> _subscriptions = new List<IDisposable>();
 
             protected override void Given()
             {
                 _toStringTextWriter = new ToStringTextWriter();
-                _subscription = Output.WriteTo(_toStringTextWriter);
+                _subscriptions.Add(Output.WriteTo(_toStringTextWriter));
+                _subscriptions.Add(Output.WriteToTrace());
             }
 
             protected override void When()
@@ -65,7 +70,10 @@ namespace Test.It.Tests
             public void Dispose()
             {
                 _toStringTextWriter.Dispose();
-                _subscription.Dispose();
+                foreach (var subscription in _subscriptions)
+                {
+                    subscription.Dispose();
+                }
             }
         }
 
@@ -73,12 +81,13 @@ namespace Test.It.Tests
         public class When_writing_to_console : XUnit2Specification, IDisposable
         {
             private ToStringTextWriter _toStringTextWriter;
-            private IDisposable _subscription;
+            private readonly List<IDisposable> _subscriptions = new List<IDisposable>();
 
             protected override void Given()
             {
                 _toStringTextWriter = new ToStringTextWriter();
-                _subscription = Output.WriteTo(_toStringTextWriter);
+                _subscriptions.Add(Output.WriteTo(_toStringTextWriter));
+                _subscriptions.Add(Output.WriteToConsole());
             }
 
             protected override void When()
@@ -96,7 +105,10 @@ namespace Test.It.Tests
             public void Dispose()
             {
                 _toStringTextWriter.Dispose();
-                _subscription.Dispose();
+                foreach (var subscription in _subscriptions)
+                {
+                    subscription.Dispose();
+                }
             }
         }
 
@@ -104,12 +116,13 @@ namespace Test.It.Tests
         public class When_writing_to_console_utilizing_xunit_parallelism : XUnit2Specification, IDisposable
         {
             private ToStringTextWriter _toStringTextWriter;
-            private IDisposable _subscription;
+            private readonly List<IDisposable> _subscriptions = new List<IDisposable>();
 
             protected override void Given()
             {
                 _toStringTextWriter = new ToStringTextWriter();
-                _subscription = Output.WriteTo(_toStringTextWriter);
+                _subscriptions.Add(Output.WriteTo(_toStringTextWriter));
+                _subscriptions.Add(Output.WriteToConsole());
             }
 
             protected override void When()
@@ -127,7 +140,10 @@ namespace Test.It.Tests
             public void Dispose()
             {
                 _toStringTextWriter.Dispose();
-                _subscription.Dispose();
+                foreach (var subscription in _subscriptions)
+                {
+                    subscription.Dispose();
+                }
             }
         }
 
