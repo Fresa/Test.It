@@ -7,8 +7,10 @@ namespace Test.It.Specifications
     {
         protected async Task SetupAsync(CancellationToken cancellationToken = default)
         {
-            await GivenAsync(cancellationToken);
-            await WhenAsync(cancellationToken);
+            await GivenAsync(cancellationToken)
+                .ConfigureAwait(false);
+            await WhenAsync(cancellationToken)
+                .ConfigureAwait(false);
         }
 
         protected virtual Task GivenAsync(CancellationToken cancellationToken)
