@@ -30,7 +30,7 @@ namespace Test.It.Tests
             [Fact]
             public void It_should_have_sent_the_output_to_the_output_target()
             {
-                _toStringTextWriter.Output.Should().Be("Writing to\r\ntrace");
+                _toStringTextWriter.Output.Should().Be($"Writing to{Environment.NewLine}trace");
             }
 
             public void Dispose()
@@ -64,7 +64,7 @@ namespace Test.It.Tests
             [Fact]
             public void It_should_have_sent_the_output_to_the_output_target()
             {
-                _toStringTextWriter.Output.Should().Be("Writing again to\r\ntracing");
+                _toStringTextWriter.Output.Should().Be($"Writing again to{Environment.NewLine}tracing");
             }
 
             public void Dispose()
@@ -99,7 +99,7 @@ namespace Test.It.Tests
             [Fact]
             public void It_should_have_sent_the_output_to_the_output_target()
             {
-                _toStringTextWriter.Output.Should().Be("Writing\r\nto console");
+                _toStringTextWriter.Output.Should().Be($"Writing{Environment.NewLine}to console");
             }
 
             public void Dispose()
@@ -134,7 +134,7 @@ namespace Test.It.Tests
             [Fact]
             public void It_should_have_sent_the_output_to_the_output_target()
             {
-                _toStringTextWriter.Output.Should().Be("Writing again\r\nto the console");
+                _toStringTextWriter.Output.Should().Be($"Writing again{Environment.NewLine}to the console");
             }
 
             public void Dispose()
@@ -167,7 +167,7 @@ namespace Test.It.Tests
             [Fact]
             public void It_should_have_sent_the_output_to_the_output_target()
             {
-                _toStringTextWriter.Output.Should().Be("Writing to\r\ninput");
+                _toStringTextWriter.Output.Should().Be($"Writing to{Environment.NewLine}input");
             }
 
             public void Dispose()
@@ -197,7 +197,7 @@ namespace Test.It.Tests
             [Fact]
             public void It_should_have_sent_the_output_to_the_output_target()
             {
-                _toStringTextWriter.Output.Should().Be("Writing again to\r\ninput writer");
+                _toStringTextWriter.Output.Should().Be($"Writing again to{Environment.NewLine}input writer");
             }
 
             public void Dispose()
