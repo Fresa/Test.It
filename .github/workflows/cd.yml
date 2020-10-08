@@ -35,7 +35,7 @@ jobs:
       run: dotnet pack src/Test.It/Test.It.csproj -c Release -o nuget-packages --no-build -p:PackageVersion=${{ steps.set-version.outputs.new_version }} -p:PackageReleaseNotes="${{ steps.set-version.outputs.changelog }}"
     - name: Publish to nuget.org
       if: ${{ steps.set-version.outputs.new_version && github.ref == 'refs/heads/master' }}
-      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push src/Test.It/nuget-packages/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
 
     outputs:
       version: ${{ steps.set-version.outputs.new_tag }}
